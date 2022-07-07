@@ -112,7 +112,7 @@ Open the eshell     (SPC e s)\
 \nOpen dired file manager (SPC d d)   \
 List of keybindings (SPC h b b)")
   ;;(setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
-  (setq dashboard-startup-banner "~/.config/doom/doom-emacs-dash.png")  ;; use custom image as banner
+  (setq dashboard-startup-banner "/home/mko/.config/doom/doom-emacs-dash.png")  ;; use custom image as banner
   (setq dashboard-center-content nil) ;; set to 't' for centered content
   (setq dashboard-items '((recents . 5)
                           (agenda . 5 )
@@ -234,8 +234,8 @@ List of keybindings (SPC h b b)")
 
 (setq erc-prompt (lambda () (concat "[" (buffer-name) "]"))
       erc-server "irc.libera.chat"
-      erc-nick "distrotube"
-      erc-user-full-name "Derek Taylor"
+      erc-nick "mko"
+      erc-user-full-name "Marko Vancev"
       erc-track-shorten-start 24
       erc-autojoin-channels-alist '(("irc.libera.chat" "#archlinux" "#linux" "#emacs"))
       erc-kill-buffer-on-part t
@@ -262,7 +262,7 @@ List of keybindings (SPC h b b)")
        :desc "Eww reload page" "R" #'eww-reload))
 
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 15)
-      doom-variable-pitch-font (font-spec :family "UbuntuMono Nerd Font" :size 15)
+      doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
       doom-big-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t
@@ -400,14 +400,14 @@ List of keybindings (SPC h b b)")
   (interactive)
   (dolist
       (face
-       '((org-level-1 1.5 "#51afef" bold)
-         (org-level-2 1.4 "#c678dd" bold)
-         (org-level-3 1.3 "#98be65" bold)
-         (org-level-4 1.2 "#da8548" semi-bold)
-         (org-level-5 1.1 "#5699af" normal)
-         (org-level-6 1.0 "#a9a1e1" normal)
-         (org-level-7 0.9 "#46d9ff" normal)
-         (org-level-8 0.8 "#ff6c6b" normal)))
+       '((org-level-1 1.5 "#51afef" ultra-bold)
+         (org-level-2 1.3 "#c678dd" extra-bold)
+         (org-level-3 1.1 "#98be65" bold)
+         (org-level-4 1.0 "#da8548" semi-bold)
+         (org-level-5 0.8 "#5699af" normal)
+         (org-level-6 0.6 "#a9a1e1" normal)
+         (org-level-7 0.4 "#46d9ff" normal)
+         (org-level-8 0.2 "#ff6c6b" normal)))
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
 
