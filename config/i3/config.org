@@ -1,3 +1,13 @@
+#+TITLE: i3wm Config
+#+AUTHOR: mko
+
+* Welcome to mko's i3wm config!
+** nothing special here, pretty bare bones actually
+** if you need help, https://i3wm.org/docs/ check out the docs
+
+* COLORS
+All the theming options for my i3wm config, from colors to fonts. Swap between color schemes by commenting out lines.
+#+BEGIN_SRC sh :tangle config
 ## Dracula
 
 # class                   border  backgr. text    indicator child_border
@@ -23,7 +33,13 @@ smart_borders on
 default_floating_border none
 default_floating_border normal 0
 hide_edge_borders smart
+#+END_SRC
 
+#+RESULTS:
+
+* i3wm STANDARDS
+Stuff from the default i3 config im didn't tamper with
+#+BEGIN_SRC sh :tangle config
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
@@ -62,7 +78,14 @@ bindsym $mod+Shift+Return exec --no-startup-id $RUN
 
 # kill focused window
 bindsym $mod+Shift+c kill
+#+END_SRC
 
+* TILING, RESIZING AND GAPS
+More ricing options, set the gap size and control the tiling
+NOTE: I have a few python scripts, all of which are located in $HOME/config/i3
+these scripts are from https://github.com/Hippo0o/i3-master-layout and are used to give me the master and stack layout functionality
+dependencies: i3ipc (pip3 install i3ipc) (pip comes from the python-pip package)
+#+BEGIN_SRC sh :tangle config
 smart_gaps on
 gaps inner 4
 gaps outer 4
@@ -139,7 +162,12 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+#+END_SRC
 
+* WORKSPACES
+All my workspace settings, if you want to change the name of the workspaces, make sure to add the corresponding number.. for example "10:*name of workspace*"
+Don't forget to add the newly created workspace it's own keybindings.
+#+BEGIN_SRC sh :tangle config
 set $ws1 "1:www"
 set $ws2 "2:chat"
 set $ws3 "3:term"
@@ -169,14 +197,22 @@ bindsym $mod+Shift+6 move container to workspace number $ws6
 bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
+#+END_SRC
 
+* EXTRAS
+Some extras, such as DT's dmscripts and turning off mouse warping (puts the mouse in the middle of the newly opened window)
+Get DT's dmscripts from his gitlab: https://gitlab.com/dwt1/dmscripts
+#+BEGIN_SRC sh :tangle config
 bindsym $mod+Shift+e exec "dm-logout"
 
 bindsym $mod+Shift+q exec "dm-hub"
 
 mouse_warping none
 focus_follows_mouse no
+#+END_SRC
 
+* AUTOSTART AND KEYBINDINGS
+#+BEGIN_SRC sh :tangle config
 # Autostart apps
 exec_always     --no-startup-id ~/.config/polybar/launch.sh            # Polybar script
 exec_always     --no-startup-id ~/.config/mk-lang                      # MK language
@@ -220,9 +256,27 @@ bindsym Ctrl+Shift+l exec "flameshot gui"
 # GIF recording
 # dependencies: peek
 bindsym Ctrl+Shift+g exec "peek"
+#+END_SRC
 
+* CLI UTILITIES
+Watching anime from the terminal with ani-cli!
+Get ani-cli from: https://github.com/pystardust/ani-cli
+Dependencies: curl, mpv, ffmpeg
+NOTE: do remember to change the terminal to your preferred terminal emulator if you want to use this keybinding.
+
+Watching movies from the terminal!
+Get mov-cli from: https://github.com/mov-cli/mov-cli
+Dependencies: curl, mpv, ffmpeg, fzf
+(Optional) Dependencies: Python
+NOTE: do remember to change the terminal to your preferred terminal emulator if you want to use this keybinding.
+
+Locking your screen with betterlockscreen!
+Get betterlockscreen from: https://github.com/betterlockscreen/betterlockscreen
+Dependencies: imagemagick, i3-lock-color
+#+BEGIN_SRC sh :tangle config
 bindsym $mod+Shift+a exec "alacritty --hold -e ani-cli"
 
 bindsym $mod+Ctrl+m exec "alacritty --hold -e $HOME/github/mov-cli/mov-cli"
 
 bindsym $mod+Ctrl+l exec "betterlockscreen -l dimblur"
+#+END_SRC
