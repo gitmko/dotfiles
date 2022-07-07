@@ -1,3 +1,9 @@
+#+title: Polybar Config
+#+author: mko
+
+* COLORS
+Setting the colors!
+#+BEGIN_SRC sh :tangle config.ini
 [colors]
 background = #282c34
 background-alt = #282c34
@@ -6,7 +12,11 @@ primary = #51afef
 secondary = #c678dd
 alert = #ff6c6b
 disabled = #707880
+#+END_SRC
 
+* BASE BAR
+NOTE: Change the monitor! (do 'xrandr | grep connnected' and look for the connected monitor's name and replace 'HDMI-0' with it.)
+#+BEGIN_SRC sh :tangle config.ini
 [bar/base]
 monitor = HDMI-0
 width = 100%
@@ -53,7 +63,12 @@ enable-ipc = true
 ; wm-restack = generic
 ; wm-restack = bspwm
 wm-restack = i3
+#+END_SRC
 
+* SECOND BAR
+Second bar template for a second monitor
+NOTE: Change the monitor name again.
+#+BEGIN_SRC sh :tangle config.ini
 [bar/secondary]
 monitor = DVI-D-0
 width = 100%
@@ -85,7 +100,14 @@ cursor-click = pointer
 cursor-scroll = ns-resize
 
 enable-ipc = true
+#+END_SRC
 
+* MODULES
+These are all of those modules I use in my bars
+
+**  KERNEL
+Kernel Module to display the kernel version
+#+BEGIN_SRC sh :tangle config.ini
 [module/kernel]
 type = custom/script
 exec = uname -r | sed s/1-1//
@@ -95,18 +117,30 @@ format-foreground = ${colors.primary}
 format-underline = ${colors.primary}
 format-prefix = " "
 click-left = alacritty --hold -e "neofetch"
+#+END_SRC
 
+**  SEPERATOR
+Seperator module to seperate all the other modules (I don't use the built in polybar module because it confilicts with my spotify player's buttons)
+#+BEGIN_SRC sh :tangle config.ini
 [module/sep]
 type = custom/text
 content = |
 content-foreground = ${colors.disabled}
 content-padding = 1
+#+END_SRC
 
+**  ARCH LOGO
+Just a cool module to display the arch logo at the top left, you can change the emoji to whatever distro (if it's available as an emoji, check the nerd-fonts cheatsheet https://www.nerdfonts.com/cheat-sheet)
+#+BEGIN_SRC sh :tangle config.ini
 [module/archlogo]
 type = custom/text
 content = " "
 content-foreground = ${colors.primary}
+#+END_SRC
 
+**  WORKSPACES
+The i3wm workspaces module, nothing special here
+#+BEGIN_SRC sh :tangle config.ini
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
@@ -136,7 +170,13 @@ label-urgent-padding = 1
 strip-wsnumbers = true
 
 wm-restack = i3
+#+END_SRC
 
+**  VOLUME
+Set the volume through polybar!
+Scroll to change the volume leve
+Middle click the module to open 'pavucontrol' (if you have it installed) for even more audio control.
+#+BEGIN_SRC sh :tangle config.ini
 [module/pulseaudio]
 type = internal/pulseaudio
 mapped = true
@@ -156,7 +196,11 @@ ramp-volume-1-weight = 5
 ramp-volume-2 = "墳"
 ramp-volume-2-weight = 90
 click-middle = pavucontrol
+#+END_SRC
 
+**  XKEYBOARD
+Choose which keyboard layout you have selected (only works with xorg, hence the X in the name)
+#+BEGIN_SRC sh :tangle config.ini
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
@@ -170,7 +214,11 @@ label-indicator-padding = 0
 label-indicator-margin = 0.85
 label-indicator-foreground = #ff6c6b
 label-indicator-background = ${colors.background}
+#+END_SRC
 
+**  CPU
+Shows CPU usage in polybar! (work on this)
+#+BEGIN_SRC sh :tangle config.ini
 [module/cpu]
 type = internal/cpu
 
@@ -196,7 +244,11 @@ label-warn-foreground = #ff6c6b
 label-warn-underline = #ff6c6b
 
 label-warn =  %percentage%%
+#+END_SRC
 
+**  NETWORK
+Shows network usage in polybar!
+#+BEGIN_SRC sh :tangle config.ini
 [module/network]
 type = internal/network
 interval = 1.0
@@ -216,7 +268,11 @@ format-disconnected-prefix-foreground = #ff6c6b
 format-disconnected-foreground = #ff6c6b
 format-disconnected-underline = #ff6c6b
 label-disconnected = Disconnected
+#+END_SRC
 
+** DATE
+Shows the date.
+#+BEGIN_SRC sh :tangle config.ini
 [module/date]
 type = internal/date
 interval = 5
@@ -227,7 +283,12 @@ label-foreground = #bbc2cf
 [settings]
 screenchange-reload = true
 pseudo-transparency = true
+#+END_SRC
 
+** SPOTIFY
+The next few modules will be packed into one, they're just spotify controls
+Dependencies: zscroll, playerctl (zscroll is available in the AUR, playerctl is available in the arch repos)
+#+BEGIN_SRC sh :tangle config.ini
 [module/spotify]
 type = custom/script
 tail = true
@@ -260,7 +321,15 @@ exec = echo "怜"
 format = <label>
 format-underline = #98be65
 click-left = playerctl next -p spotify
+#+END_SRC
 
+** POWERMENU
+Powermenu, top right of the bar
+Click the arch-like logo to show/hide the buttons
+Green button launches betterlockscreen (info on betterlockscreen in the i3 config.org)
+Yellow button restarts your system
+Red button shuts down your system.
+#+BEGIN_SRC sh :tangle config.ini
 [module/powermenu]
 type=custom/menu
 expand-right = false
@@ -287,3 +356,4 @@ menu-0-0 = ""
 menu-0-0-padding-right = 8 px
 menu-0-0-foreground = #98be65
 menu-0-0-exec = betterlockscreen -l
+#+END_SRC
