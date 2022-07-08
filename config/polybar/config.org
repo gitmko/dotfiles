@@ -148,7 +148,7 @@ click-left = alacritty --hold -e "neofetch"
 #+END_SRC
 
 ** SEPERATOR
-Seperator module to seperate all the other modules (I don't use the built in polybar module because it confilicts with my spotify player's buttons)
+Seperator module to seperate all the other modules (I don't use the built in polybar module because it conflicts with my spotify modules' button to change songs)
 #+BEGIN_SRC sh :tangle config.ini
 [module/sep]
 type = custom/text
@@ -202,7 +202,7 @@ wm-restack = i3
 
 ** VOLUME
 Set the volume through polybar!
-Scroll to change the volume leve
+Scroll to change the volume level
 Middle click the module to open 'pavucontrol' (if you have it installed) for even more audio control.
 #+BEGIN_SRC sh :tangle config.ini
 [module/pulseaudio]
@@ -247,7 +247,7 @@ label-indicator-background = ${colors.background}
 #+END_SRC
 
 ** CPU
-Shows CPU usage in polybar! (work on this)
+Shows CPU usage in polybar!
 #+BEGIN_SRC sh :tangle config.ini
 [module/cpu]
 type = internal/cpu
