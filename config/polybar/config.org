@@ -21,6 +21,8 @@ magenta =    #c678dd
 cyan =       #5699af
 white =      #202328
 
+pink =       #ff92d8
+
 ### Dracula
 
 # background =  #282c36
@@ -33,6 +35,9 @@ white =      #202328
 # magenta:      #ff79c6
 # cyan:         #8be9fd
 # white:        #bfbfbf
+
+# pink          #ff92d8
+
 
 #+END_SRC
 
@@ -383,4 +388,88 @@ menu-0-0 = ""
 menu-0-0-padding-right = 8 px
 menu-0-0-foreground = ${colors.green}
 menu-0-0-exec = betterlockscreen -l
+#+END_SRC
+** BATTERY
+Show battery module for laptops
+laptop battery module
+NOTE: Change the battery and adapter or the module won't appear
+#+BEGIN_SRC sh :tangle config.ini
+[module/battery]
+type = internal/battery
+
+full-at = 99
+
+; Use the following command to list batteries and adapters
+;ls -1 /sys/class/power_supply/
+battery = BAT1
+adapter = ACAD
+
+poll-interval = 5
+
+time-format = $H:$M
+
+format-charging = <animation-charging <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+
+label-charging = +%percentage%%
+label-discharging = -%percentage%%
+
+label-full = 
+label-full-foreground = ${colors.blue}
+label-full-underline = ${colors.blue}
+label-charging-foregrond = ${colors.green}
+label-charging-underline = ${colors.green}
+label-discharging-foreground = ${colors.red}
+label-discharging-underline = ${colors.red}
+format-charging-foreground = ${colors.red}
+format-charging-underline = ${colors.red}
+format-discharging-foreground = ${colors.red}
+format-discharging-foreground = ${colors.red}
+
+; Only applies if <ramp-capacity> is used
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+; Only applies if <bar-capacity> is used
+bar-capacity-width = 10
+
+; Only applies if <animation-charging> is used
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+; Framerate in milliseconds
+animation-charging-framerate = 750
+
+; Only applies if <animation-discharging> is used
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
+; Framerate in milliseconds
+animation-discharging-framerate = 500
+#+END_SRC
+** BRIGHTNESS
+Show screen brightness (mostly for use on laptops)
+#+BEGIN_SRC sh :tangle config.ini
+[module/backlight]
+type = internal/backlight
+
+; Use the following command to list available cards
+; ls -1 /sys/class/backlight
+card = intel_backlight
+
+use-actual-brightness = true
+
+format = <label>
+
+label =  %percentage%%
+
+label-foreground = ${colors.pink}
+label-foreground = ${colors.pink}
 #+END_SRC
