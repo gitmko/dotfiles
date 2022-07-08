@@ -42,9 +42,8 @@ set $mod Mod4
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-#
-# Terminal, Run Launcher and Gaps
-#
+# kill focused window
+bindsym $mod+Shift+c kill
 
 # change "alacritty -e fish" to whatever terminal you prefer
 set $TERM "alacritty -e fish"
@@ -57,9 +56,6 @@ bindsym $mod+Return exec $TERM
 
 # start a run launcher
 bindsym $mod+Shift+Return exec --no-startup-id $RUN
-
-# kill focused window
-bindsym $mod+Shift+c kill
 
 smart_gaps on
 gaps inner 4
