@@ -5,13 +5,35 @@
 Setting the colors!
 #+BEGIN_SRC sh :tangle config.ini
 [colors]
-background = #282c34
-background-alt = #282c34
-foreground = #C5C8C6
-primary = #51afef
-secondary = #c678dd
-alert = #ff6c6b
+
 disabled = #707880
+
+### DoomOne
+
+background = #282c34
+foreground = #bbc2cf
+black =      #1c1f24
+red =        #ff6c6b
+green =      #98be65
+yellow =     #ecbe7b
+blue =       #51afef
+magenta =    #c678dd
+cyan =       #5699af
+white =      #202328
+
+### Dracula
+
+# background =  #282c36
+# foreground:   #f8f8f2
+# black:        #000000
+# red:          #ff5555
+# green:        #5af78e
+# yellow:       #f1fa8c
+# blue:         #bd93f9
+# magenta:      #ff79c6
+# cyan:         #8be9fd
+# white:        #bfbfbf
+
 #+END_SRC
 
 * BASE BAR
@@ -45,7 +67,7 @@ font-1 = FontAwesome:pixelsize=16;2
 
 modules-left = archlogo sep i3 sep spotify spotify-prev spotify-play-pause spotify-next
 modules-center = date
-modules-right = cpu sep kernel sep xkeyboard sep pulseaudio sep network sep powermenu
+modules-right = kernel sep cpu sep xkeyboard sep pulseaudio sep network sep powermenu
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -103,9 +125,10 @@ enable-ipc = true
 #+END_SRC
 
 * MODULES
+
 These are all of those modules I use in my bars
 
-**  KERNEL
+** KERNEL
 Kernel Module to display the kernel version
 #+BEGIN_SRC sh :tangle config.ini
 [module/kernel]
@@ -113,13 +136,13 @@ type = custom/script
 exec = uname -r | sed s/1-1//
 tail = false
 interval = 1024
-format-foreground = ${colors.primary}
-format-underline = ${colors.primary}
+format-foreground = ${colors.blue}
+format-underline = ${colors.blue}
 format-prefix = " "
 click-left = alacritty --hold -e "neofetch"
 #+END_SRC
 
-**  SEPERATOR
+** SEPERATOR
 Seperator module to seperate all the other modules (I don't use the built in polybar module because it confilicts with my spotify player's buttons)
 #+BEGIN_SRC sh :tangle config.ini
 [module/sep]
@@ -129,16 +152,16 @@ content-foreground = ${colors.disabled}
 content-padding = 1
 #+END_SRC
 
-**  ARCH LOGO
+** ARCH LOGO
 Just a cool module to display the arch logo at the top left, you can change the emoji to whatever distro (if it's available as an emoji, check the nerd-fonts cheatsheet https://www.nerdfonts.com/cheat-sheet)
 #+BEGIN_SRC sh :tangle config.ini
 [module/archlogo]
 type = custom/text
 content = " "
-content-foreground = ${colors.primary}
+content-foreground = ${colors.blue}
 #+END_SRC
 
-**  WORKSPACES
+** WORKSPACES
 The i3wm workspaces module, nothing special here
 #+BEGIN_SRC sh :tangle config.ini
 [module/i3]
@@ -151,7 +174,7 @@ wrapping-scroll = false
 label-focused = %name%
 label-focused-background = ${colors.background}
 label-focused-foreground = #ffffff
-label-focused-underline = ${colors.primary}
+label-focused-underline = ${colors.blue}
 label-focused-padding = 1
 
 label-unfocused = %name%
@@ -160,11 +183,11 @@ label-unfocused-padding = 1
 
 label-visible = %name%
 label-visible-background = ${colors.background}
-label-visible-underline = ${colors.primary}
+label-visible-underline = ${colors.blue}
 label-visible-padding = 1
 
 label-urgent = %name%
-label-urgent-background = ${colors.alert}
+label-urgent-background = ${colors.red}
 label-urgent-padding = 1
 
 strip-wsnumbers = true
@@ -172,7 +195,7 @@ strip-wsnumbers = true
 wm-restack = i3
 #+END_SRC
 
-**  VOLUME
+** VOLUME
 Set the volume through polybar!
 Scroll to change the volume leve
 Middle click the module to open 'pavucontrol' (if you have it installed) for even more audio control.
@@ -182,14 +205,15 @@ type = internal/pulseaudio
 mapped = true
 
 format-volume = <ramp-volume> <label-volume>
-format-volume-underline = #98be65
-format-muted-underline = #ff6c6b
-label-volume = %{F#98be65}%percentage%%
+format-volume-underline = ${colors.green}
+format-muted-underline = ${colors.red}
+label-volume-foreground = ${colors.green}
+label-volume = %percentage%%
 label-muted = "婢 muted"
 interval = 5
 
-label-muted-foreground = #ff6c6b
-ramp-volume-foreground = #98be65
+label-muted-foreground = ${colors.red}
+ramp-volume-foreground = ${colors.green}
 ramp-volume-0 = "婢  "
 ramp-volume-1 = "墳  "
 ramp-volume-1-weight = 5
@@ -198,7 +222,7 @@ ramp-volume-2-weight = 90
 click-middle = pavucontrol
 #+END_SRC
 
-**  XKEYBOARD
+** XKEYBOARD
 Choose which keyboard layout you have selected (only works with xorg, hence the X in the name)
 #+BEGIN_SRC sh :tangle config.ini
 [module/xkeyboard]
@@ -206,17 +230,18 @@ type = internal/xkeyboard
 blacklist-0 = num lock
 
 label-layout = %layout%
-label-layout-foreground = ${#ff6c6b}
+label-layout-foreground = ${colors.red}
 
-format-prefix = %{F#ff6c6b} %{F#ff6c6b}
-format-underline = #ff6c6b
+format-prefix = " "
+format-foreground = ${colors.red}
+format-underline = ${colors.red}
 label-indicator-padding = 0
 label-indicator-margin = 0.85
-label-indicator-foreground = #ff6c6b
+label-indicator-foreground = ${colors.red}
 label-indicator-background = ${colors.background}
 #+END_SRC
 
-**  CPU
+** CPU
 Shows CPU usage in polybar! (work on this)
 #+BEGIN_SRC sh :tangle config.ini
 [module/cpu]
@@ -237,16 +262,16 @@ format = <label>
 
 label =  %percentage%%
 
-label-foreground = #5699af
-label-underline = #5699af
+label-foreground = ${colors.cyan}
+label-underline = ${colors.cyan}
 
-label-warn-foreground = #ff6c6b
-label-warn-underline = #ff6c6b
+label-warn-foreground = ${colors.red}
+label-warn-underline = ${colors.red}
 
 label-warn =  %percentage%%
 #+END_SRC
 
-**  NETWORK
+** NETWORK
 Shows network usage in polybar!
 #+BEGIN_SRC sh :tangle config.ini
 [module/network]
@@ -257,16 +282,16 @@ format-connected = <label-connected>
 format-disconnected = <label-disconnected>
 
 format-connected-prefix = "直"
-format-connected-prefix-foreground = #c678dd
-format-connected-foreground = #c678dd
-format-connected-underline = #c678dd
+format-connected-prefix-foreground = ${colors.magenta}
+format-connected-foreground = ${colors.magenta}
+format-connected-underline = ${colors.magenta}
 label-connected = " %upspeed%"
-label-foreground = #c678dd
+label-foreground = ${colors.magenta}
 
 format-disconnected-prefix = "睊 "
-format-disconnected-prefix-foreground = #ff6c6b
-format-disconnected-foreground = #ff6c6b
-format-disconnected-underline = #ff6c6b
+format-disconnected-prefix-foreground = ${colors.red}
+format-disconnected-foreground = ${colors.red}
+format-disconnected-underline = ${colors.red}
 label-disconnected = Disconnected
 #+END_SRC
 
@@ -278,7 +303,7 @@ type = internal/date
 interval = 5
 date = %A %B %d, %H:%M
 label = %date%
-label-foreground = #bbc2cf
+label-foreground = ${colors.foreground}
 
 [settings]
 screenchange-reload = true
@@ -293,9 +318,11 @@ Dependencies: zscroll, playerctl (zscroll is available in the AUR, playerctl is 
 type = custom/script
 tail = true
 interval = 1
-format-prefix = "%{F#98be65} %{F#bbc2cf} "
-format-prefix-underline = #98be65
-format-underline = #98be65
+format-prefix = " "
+format-prefix-foreground = ${colors.green}
+format-foreground = ${colors.foreground}
+format-prefix-underline = ${colors.green}
+format-underline = ${colors.green}
 ; prefix symbol is shown before the text
 format = <label>
 exec = ~/.config/polybar/scripts/scroll_spotify_status.sh
@@ -304,7 +331,7 @@ exec = ~/.config/polybar/scripts/scroll_spotify_status.sh
 type = custom/script
 exec = echo " 玲"
 format = <label>
-format-underline = #98be65
+format-underline = ${colors.green}
 click-left = playerctl previous -p spotify
 
 [module/spotify-play-pause]
@@ -312,14 +339,14 @@ type = custom/ipc
 hook-0 = echo " 懶 "
 hook-1 = echo " 懶 "
 initial = 1
-format-underline = #98be65
+format-underline = ${colors.green}
 click-left = playerctl play-pause -p spotify
 
 [module/spotify-next]
 type = custom/script
 exec = echo "怜"
 format = <label>
-format-underline = #98be65
+format-underline = ${colors.green}
 click-left = playerctl next -p spotify
 #+END_SRC
 
@@ -335,25 +362,25 @@ type=custom/menu
 expand-right = false
 
 label-open = "ﴂ "
-label-open-foreground = ${colors.primary}
+label-open-foreground = ${colors.blue}
 label-close = " ﴂ"
-label-close-foreground = ${colors.primary}
+label-close-foreground = ${colors.blue}
 label-close-padding-right = 8 px
 
 ; Shutdown
 menu-0-2 = ""
 menu-0-2-padding = 8 px
-menu-0-2-foreground = ${colors.alert}
+menu-0-2-foreground = ${colors.red}
 menu-0-2-exec = shutdown -P now
 ; Reboot
 menu-0-1 = "ﲭ"
 menu-0-1-padding = 8 px
-menu-0-1-foreground = #ecbe7b
+menu-0-1-foreground = ${colors.yellow}
 menu-0-1-exec = shutdown -r now
 
 ; Log out
 menu-0-0 = ""
 menu-0-0-padding-right = 8 px
-menu-0-0-foreground = #98be65
+menu-0-0-foreground = ${colors.green}
 menu-0-0-exec = betterlockscreen -l
 #+END_SRC

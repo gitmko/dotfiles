@@ -111,8 +111,8 @@ Open buffer list    (SPC b i)\
 Open the eshell     (SPC e s)\
 \nOpen dired file manager (SPC d d)   \
 List of keybindings (SPC h b b)")
-  ;;(setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
-  (setq dashboard-startup-banner "/home/mko/.config/doom/doom-emacs-dash.png")  ;; use custom image as banner
+  ;(setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
+  (setq dashboard-startup-banner "~/.config/doom/cacochan.png")  ;; use custom image as banner
   (setq dashboard-center-content nil) ;; set to 't' for centered content
   (setq dashboard-items '((recents . 5)
                           (agenda . 5 )
@@ -261,9 +261,9 @@ List of keybindings (SPC h b b)")
        :desc "Eww web browser" "w" #'eww
        :desc "Eww reload page" "R" #'eww-reload))
 
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 15)
-      doom-variable-pitch-font (font-spec :family "Ubuntu" :size 15)
-      doom-big-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 24))
+(setq doom-font (font-spec :family "jetbrainsmono nerd font mono" :size 15)
+      doom-variable-pitch-font (font-spec :family "ubuntu" :size 15)
+      doom-big-font (font-spec :family "jetbrainsmono nerd font mono" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
@@ -355,7 +355,7 @@ List of keybindings (SPC h b b)")
 
 (map! :leader
       (:prefix ("=" . "open file")
-       :desc "Edit agenda file" "a" #'(lambda () (interactive) (find-file "~/Org/agenda.org"))
+       :desc "Edit agenda file" "a" #'(lambda () (interactive) (find-file "~/org/agenda.org"))
        :desc "Edit doom config.org" "c" #'(lambda () (interactive) (find-file "~/.config/doom/config.org"))
        :desc "Edit doom init.el" "i" #'(lambda () (interactive) (find-file "~/.config/doom/init.el"))
        :desc "Edit doom packages.el" "p" #'(lambda () (interactive) (find-file "~/.config/doom/packages.el"))))
@@ -400,10 +400,10 @@ List of keybindings (SPC h b b)")
   (interactive)
   (dolist
       (face
-       '((org-level-1 1.5 "#51afef" ultra-bold)
-         (org-level-2 1.3 "#c678dd" extra-bold)
-         (org-level-3 1.1 "#98be65" bold)
-         (org-level-4 1.0 "#da8548" semi-bold)
+       '((org-level-1 1.5 "#51afef" extra-bold)
+         (org-level-2 1.3 "#c678dd" bold)
+         (org-level-3 1.1 "#98be65" semi-bold)
+         (org-level-4 1.0 "#da8548" normal)
          (org-level-5 0.8 "#5699af" normal)
          (org-level-6 0.6 "#a9a1e1" normal)
          (org-level-7 0.4 "#46d9ff" normal)

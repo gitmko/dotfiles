@@ -7,6 +7,8 @@
 # client.urgent           #ff5555 #e6e6e6 #ad69af #59dffc
 # client.placeholder      #000000 #0c0c0c #bd93f9 #000000
 
+# client.background       #ffffff
+
 ## Doom One
 
 # class                 border  backgr. text    indicator child_border
@@ -16,13 +18,9 @@ client.unfocused        #51afef #2F3D44 #AD69AF #454948
 client.urgent           #ff6c6b #FDF6E3 #AD69AF #2688B2
 client.placeholder      #000000 #0c0c0c #51afef #000000
 
-font pango:SauceCodePro Nerd Font 10
+client.background       #ffffff
 
-default_border pixel 2
-smart_borders on
-default_floating_border none
-default_floating_border normal 0
-hide_edge_borders smart
+font pango:monospace 0
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -66,6 +64,14 @@ bindsym $mod+Shift+c kill
 smart_gaps on
 gaps inner 4
 gaps outer 4
+for_window [class="^.*"] border pixel 3
+new_window 1pixel
+default_border pixel 2
+smart_borders on
+default_floating_border none
+default_floating_border normal 0
+hide_edge_borders smart
+
 
 bindsym $mod+q exec --no-startup-id ~/.config/i3/i3-swap-master.py
 

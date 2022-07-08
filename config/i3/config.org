@@ -1,11 +1,11 @@
 #+TITLE: i3wm Config
 #+AUTHOR: mko
+#+DESCIPTION: mko's i3wm Config.
 
-* Welcome to mko's i3wm config!
-** nothing special here, pretty bare bones actually
-** if you need help, https://i3wm.org/docs/ check out the docs
+* i3WM
+i3 is a dynamic tiling window manager inspired by wmii that is primarily targeted at developers and advanced users.
 
-* COLORS
+* i3 THEME
 All the theming options for my i3wm config, from colors to fonts. Swap between color schemes by commenting out lines.
 #+BEGIN_SRC sh :tangle config
 ## Dracula
@@ -17,6 +17,8 @@ All the theming options for my i3wm config, from colors to fonts. Swap between c
 # client.urgent           #ff5555 #e6e6e6 #ad69af #59dffc
 # client.placeholder      #000000 #0c0c0c #bd93f9 #000000
 
+# client.background       #ffffff
+
 ## Doom One
 
 # class                 border  backgr. text    indicator child_border
@@ -26,18 +28,12 @@ client.unfocused        #51afef #2F3D44 #AD69AF #454948
 client.urgent           #ff6c6b #FDF6E3 #AD69AF #2688B2
 client.placeholder      #000000 #0c0c0c #51afef #000000
 
-font pango:SauceCodePro Nerd Font 10
+client.background       #ffffff
 
-default_border pixel 2
-smart_borders on
-default_floating_border none
-default_floating_border normal 0
-hide_edge_borders smart
+font pango:monospace 0
 #+END_SRC
 
-#+RESULTS:
-
-* i3wm STANDARDS
+* i3 STANDARDS
 Stuff from the default i3 config im didn't tamper with
 #+BEGIN_SRC sh :tangle config
 # Start XDG autostart .desktop files using dex. See also
@@ -89,6 +85,14 @@ dependencies: i3ipc (pip3 install i3ipc) (pip comes from the python-pip package)
 smart_gaps on
 gaps inner 4
 gaps outer 4
+for_window [class="^.*"] border pixel 3
+new_window 1pixel
+default_border pixel 2
+smart_borders on
+default_floating_border none
+default_floating_border normal 0
+hide_edge_borders smart
+
 
 bindsym $mod+q exec --no-startup-id ~/.config/i3/i3-swap-master.py
 
