@@ -1,0 +1,19 @@
+#+title: Polybar Dracula Color Scheme
+#+description: Changes the polybar to the Dracula color scheme
+
+#+begin_src sh :tangle colors.conf
+### Dracula
+
+background =  #282c36
+foreground =  #f8f8f2
+black =       #000000
+red =         #ff5555
+green =       #5af78e
+yellow =      #f1fa8c
+blue =        #bd93f9
+magenta =     #ff79c6
+cyan =        #8be9fd
+white =       #bfbfbf
+
+pink =        #ff92d8
+#+end_src

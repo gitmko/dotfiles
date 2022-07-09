@@ -1,0 +1,19 @@
+#+title: Polybar Nord Color Scheme
+#+description: Changes the polybar to the Nord color scheme
+
+#+begin_src sh :tangle colors.conf
+### Doom One
+
+background = #2e3440
+foreground = #d8dee9
+black =      #3b4252
+red =        #bf616a
+green =      #a3be8c
+yellow =     #ebcb8b
+blue =       #81a1c1
+magenta =    #b48ead
+cyan =       #88c0d0
+white =      #202328
+
+pink =       #ff92d8
+#+end_src

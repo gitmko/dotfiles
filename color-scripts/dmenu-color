@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+declare -a options=(
+"Nord"
+"Dracula"
+"Quit"
+)
+
+# The combination of echo and printf is done to add line breaks to the end of each
+# item in the array before it is piped into dmenu.  Otherwise, all the items are listed
+# as one long line (one item).
+
+choice=$(echo "$(printf '%s\n' "${options[@]}")" | dmenu -h 26 -l 3 -p 'Change Color Scheme: ')
+case "$choice" in
+    quit)
+        echo "Program terminated." && exit 1
+    ;;
+    Nord)
+        choice="$HOME/color-scripts/color-nord.sh"
+    ;;
+    Dracula)
+        choice="$HOME/color-scripts/color-dracula.sh"
+    ;;
+    *)
+        exit 1
+    ;;
+esac
+
+# Ultimately, what do want to do with our choice? execute the script with bash!
+bash "$choice"

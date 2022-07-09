@@ -1,0 +1,9 @@
+#+title: Doom One Color Scheme for bspwm
+#+description: Changes the bspwm color scheme to doom one
+
+#+begin_src sh :tangle colors.conf
+bspc config normal_border_color "#2e3440"
+bspc config active_border_color "#81a1c1"
+bspc config focused_border_color "#81a1c1"
+bspc config presel_feedback_color "#d8dee9"
+#+end_src
