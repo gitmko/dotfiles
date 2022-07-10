@@ -10,7 +10,7 @@
 export TERM="xterm-256color"                      # getting proper colors
 export HISTCONTROL=ignoredups:erasedups           # no duplicate entries
 export ALTERNATE_EDITOR="vim"                     # if nvim fails
-export EDITOR="nvim"                              # $EDITOR use nvim in terminal
+export EDITOR="emacsclient -c -a 'emacs'"                              # $EDITOR use nvim in terminal
 
 ### SET MANPAGER
 ### Uncomment only one of these!
@@ -48,6 +48,16 @@ if [ -d "$HOME/Applications" ] ;
   then PATH="$HOME/Applications:$PATH"
 fi
 
+if [ -d "$HOME/github/mov-cli" ] ;
+  then PATH="$HOME/github/mov-cli/:$PATH"
+fi
+
+if [ -d "$HOME/color-scripts" ] ;
+  then PATH="$HOME/colors-scripts:$PATH"
+fi
+
+PATH="~/github/sct/:$PATH"
+
 #ignore upper and lowercase when TAB completion
 bind "set completion-ignore-case on"
 
@@ -84,10 +94,10 @@ ex ()
 alias vim="nvim"
 
 # Changing "ls" to "exa"
-alias ls='exa -al --color=always --group-directories-first' # my preferred listing
-alias la='exa -a --color=always --group-directories-first'  # all files and dirs
-alias ll='exa -l --color=always --group-directories-first'  # long format
-alias lt='exa -aT --color=always --group-directories-first' # tree listing
+alias ls='exa -al --icons --color=always --group-directories-first' # my preferred listing
+alias la='exa -a --icons --color=always --group-directories-first'  # all files and dirs
+alias ll='exa -l --icons --color=always --group-directories-first'  # long format
+alias lt='exa -aT --icons --color=always --group-directories-first' # tree listing
 alias l.='exa -a | egrep "^\."'
 
 # pacman and yay
@@ -130,11 +140,8 @@ alias yta-vorbis="yt-dlp --extract-audio --audio-format vorbis "
 alias yta-wav="yt-dlp --extract-audio --audio-format wav "
 alias ytv-best="yt-dlp -f bestvideo+bestaudio "
 
-# friend aliases (inside joke i was talking about)
-alias izabela="cowsay moo | lolcat"
-alias melani="cowthink -f hellokitty i like women | lolcat"
-alias void="clear && echo 'hello void-chan' && figlet 'UwU' | lolcat"
-alias metodij-chan="echo 'metodij chan: melani and void, I love you.' | lolcat && figlet 'OwO' | lolcat"
+# weather
+alias wthr="curl wttr.in"
 
 # the terminal rickroll
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
@@ -146,4 +153,6 @@ colorscript random
 
 ### SETTING THE STARSHIP PROMPT ###
 # eval "$(starship init bash)"
-export PATH=$PATH:/home/mko/.spicetify
+
+### SETTING THE BASH POWERLINE PROMPT ###
+source $HOME/.bash-powerline.sh

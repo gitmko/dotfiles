@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-      alacritty -e fish
+      alacritty
 
 # program launcher
 super + shift + Return
@@ -43,7 +43,7 @@ super + g
 #
 
 # set the window state
-super + {t,shift + t,s,f}
+super + {t,shift + t,y,f}
       bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
@@ -126,6 +126,10 @@ super + {Left,Down,Up,Right}
 
 ### EXTRAS ###
 
+# check last dunst notification
+super + d; {d}
+      {dunstctl history-pop}
+
 # dm-logout
 super + shift + e
       dm-logout
@@ -150,22 +154,23 @@ super + shift + v
 
 # Spotify (ADBLOCK)
 super + shift + s
-     bash LD_PRELOAD=/usr/lib/spotify-adblock.so spotify
+    spotify
 
 # Doom Emacs
 super + e; e
       {/usr/bin/emacsclient -c -a 'emacs' --eval "(setq doom-fallback-buffer '*dashboard*)"}
 # Doom Music
 super + e; m
-      {/usr/bin/emacsclient -c -a 'emacs' --eval '(emms)' --eval '(emms-play-directory-tree "~/Music/")'}
+      {/usr/bin/emacsclient -c -a 'emacs' --eval '(emms)' --eval '(emms-play-directory-tree "~/Music/")' --eval '(emms-toggle-repeat-playlist)'}
 
 # Discord
 super + ctrl + d
       discord
 
 # dmenu-color
+# Change color schemes with dmenu-color
 super + ctrl + c
-      bash ~/mkoOS/script/dmenu-color
+      bash ~/color-scripts/dmenu-color
 
 # Screenshot
 ctrl + shift + l
@@ -174,6 +179,10 @@ ctrl + shift + l
 # Record GIFs
 ctrl + shift + g
      peek
+
+# Spotiflyer
+super + s; {d}
+	{java -jar ~/Downloads/Spotiflyer.jar
 
 ### CLI UTILITIES ###
 

@@ -18,11 +18,11 @@ set EDITOR "nvim"		# sets the default editor to be neovim
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 # Fish colors
-set fish_color normal '#51afef'
+set fish_color normal '#81a1c1'
 set fish_color_autosuggestion '#7d7d7d'
-set fish_color_command '#51afef'
-set fish_color_error_ '#ff6c6b'
-set fish_color_param '#51afef'
+set fish_color_command '#81a1c1'
+set fish_color_error_ '#bf616a'
+set fish_color_param '#81a1c1'
 
 # dotfiles management
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
@@ -37,12 +37,17 @@ alias doomsync="~/.emacs.d/bin/doom sync"
 alias doomdoctor="~/.emacs.d/bin/doom doctor"
 alias doomupgrade="~/.emacs.d/bin/doom upgrade"
 alias doompurge="~/.emacs.d/bin/doom purge"
+alias mov-cli="~/github/mov-cli/mov-cli"
+
+# mkoOS aliases
+alias color-dracula="~/mkoOS/script/color-dracula.sh"
+alias color-doom="~/mkoOS/script/color-doom.sh"
 
 # Changing "ls" to "exa"
-alias ls='exa -al --color=always --group-directories-first' # my preferred listing
-alias la='exa -a --color=always --group-directories-first'  # all files and dirs
-alias ll='exa -l --color=always --group-directories-first'  # long format
-alias lt='exa -aT --color=always --group-directories-first' # tree listing
+alias ls='exa -al --color=always --icons --group-directories-first' # my preferred listing
+alias la='exa -a --color=always --icons --group-directories-first'  # all files and dirs
+alias ll='exa -l --color=always --icons --group-directories-first'  # long format
+alias lt='exa -aT --color=always --icons --group-directories-first' # tree listing
 alias l.='exa -a | egrep "^\."'
 
 # Colorize grep output (good for log files)
