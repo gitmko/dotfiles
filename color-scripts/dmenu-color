@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# Declaring options that we are gonna pipe into dmenu later.
 declare -a options=(
 "Nord"
 "Dracula"
@@ -10,9 +11,9 @@ declare -a options=(
 # item in the array before it is piped into dmenu.  Otherwise, all the items are listed
 # as one long line (one item).
 
-choice=$(echo "$(printf '%s\n' "${options[@]}")" | dmenu -h 26 -l 3 -p 'Change Color Scheme: ')
+choice=$(echo "$(printf '%s\n' "${options[@]}")" | dmenu -h 26 -nf '#d8dee9' -sb '#81a1c1' -sf '#2e3440' -l 3 -p 'Change Color Scheme: ')
 case "$choice" in
-    quit)
+    Quit)
         echo "Program terminated." && exit 1
     ;;
     Nord)
@@ -28,3 +29,6 @@ esac
 
 # Ultimately, what do want to do with our choice? execute the script with bash!
 bash "$choice"
+
+# Send a notification that it's done
+notify-send "Enjoy your color scheme!"
