@@ -1,3 +1,7 @@
+#+title: Nord Color Scheme
+#+description: Set the Nord color scheme for dunst - the notification daemon
+
+#+begin_src sh :tangle dunstrc
 [global]
     ### Display ###
 
@@ -332,3 +336,4 @@
  	foreground = "#e5e9f0"
  	frame_color="#bf616a"
  	timeout = 0
+#+end_src

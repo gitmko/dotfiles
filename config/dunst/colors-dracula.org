@@ -1,3 +1,7 @@
+#+title: Dracula Color Scheme
+#+description: Set the Dracula color scheme for dunst - the notification daemon
+
+#+begin_src sh :tangle dunstrc
 [global]
     ### Display ###
 
@@ -66,7 +70,7 @@
 	# Defines color of the frame around the notification window.
 
 	# Define a color for the separator.
-	frame_color = "#81a1c1"
+    frame_color = "#bd93f9"
 	# possible values are:
 	#  * auto: dunst tries to find a color fitting to the background;
 	#  * foreground: use the same color as the foreground;
@@ -320,15 +324,16 @@
 #	urgency = normal
 #
 [urgency_low]
- 	background = "#3b4252"
- 	foreground = "#e5e9f0"
- 	timeout = 4
+	background = "#282a36"
+	foreground = "#f8f8f2"
+	timeout = 4
 [urgency_normal]
- 	background = "#3b4252"
- 	foreground = "#e5e9f0"
- 	timeout = 7
+	background = "#282a36"
+	foreground = "#f8f8f2"
+	timeout = 7
 [urgency_critical]
- 	background = "#3b4252"
- 	foreground = "#e5e9f0"
- 	frame_color="#bf616a"
- 	timeout = 0
+	background = "#282a36"
+	foreground = "#f8f8f2"
+	frame_color="#ff5555"
+	timeout = 0
+#+end_src
